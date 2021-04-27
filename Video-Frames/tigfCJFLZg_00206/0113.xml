@@ -24,7 +24,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>core</name>
+		<name>periphery</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>

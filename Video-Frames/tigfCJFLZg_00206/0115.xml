@@ -24,18 +24,6 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>core</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>292</xmin>
-			<ymin>338</ymin>
-			<xmax>352</xmax>
-			<ymax>367</ymax>
-		</bndbox>
-	</object>
-	<object>
 		<name>periphery</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
