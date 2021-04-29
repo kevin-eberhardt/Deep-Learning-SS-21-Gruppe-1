@@ -12,27 +12,15 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>264</xmin>
-			<ymin>242</ymin>
-			<xmax>335</xmax>
-			<ymax>288</ymax>
-		</bndbox>
-	</object>
-	<object>
-		<name>periphery</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>260</xmin>
-			<ymin>212</ymin>
-			<xmax>336</xmax>
-			<ymax>289</ymax>
+			<xmin>263</xmin>
+			<ymin>169</ymin>
+			<xmax>333</xmax>
+			<ymax>269</ymax>
 		</bndbox>
 	</object>
 </annotation>
