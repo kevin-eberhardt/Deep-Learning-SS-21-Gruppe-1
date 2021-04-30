@@ -24,27 +24,27 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>274</xmin>
+			<xmin>273</xmin>
 			<ymin>147</ymin>
-			<xmax>391</xmax>
-			<ymax>239</ymax>
+			<xmax>351</xmax>
+			<ymax>237</ymax>
 		</bndbox>
 	</object>
 	<object>
-		<name>periphery</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>261</xmin>
-			<ymin>134</ymin>
-			<xmax>397</xmax>
-			<ymax>247</ymax>
+			<xmin>371</xmin>
+			<ymin>193</ymin>
+			<xmax>389</xmax>
+			<ymax>239</ymax>
 		</bndbox>
 	</object>
 </annotation>
