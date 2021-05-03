@@ -24,14 +24,26 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>322</xmin>
-			<ymin>248</ymin>
+			<xmin>367</xmin>
+			<ymin>243</ymin>
 			<xmax>387</xmax>
+			<ymax>296</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>329</xmin>
+			<ymin>281</ymin>
+			<xmax>368</xmax>
 			<ymax>296</ymax>
 		</bndbox>
 	</object>

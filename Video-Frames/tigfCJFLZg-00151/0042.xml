@@ -23,16 +23,4 @@
 			<ymax>312</ymax>
 		</bndbox>
 	</object>
-	<object>
-		<name>core</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>281</xmin>
-			<ymin>275</ymin>
-			<xmax>342</xmax>
-			<ymax>320</ymax>
-		</bndbox>
-	</object>
 </annotation>

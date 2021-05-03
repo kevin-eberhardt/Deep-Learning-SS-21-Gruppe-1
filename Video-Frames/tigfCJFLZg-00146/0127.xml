@@ -1,7 +1,7 @@
 <annotation>
 	<folder>tigfCJFLZg-00146</folder>
 	<filename>0127.jpg</filename>
-	<path>C:\Users\Julius\OneDrive - bwedu\Studium\06_Semester\Deep Learning\Bilder\tigfCJFLZg-00146\0127.jpg</path>
+	<path>C:\Code\Deep-Learning-SS-21-Gruppe-1\Video-Frames\tigfCJFLZg-00146\0127.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -17,21 +17,21 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>310</xmin>
+			<xmin>316</xmin>
 			<ymin>231</ymin>
-			<xmax>342</xmax>
-			<ymax>282</ymax>
+			<xmax>336</xmax>
+			<ymax>276</ymax>
 		</bndbox>
 	</object>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>298</xmin>
-			<ymin>240</ymin>
-			<xmax>380</xmax>
+			<xmin>335</xmin>
+			<ymin>247</ymin>
+			<xmax>376</xmax>
 			<ymax>295</ymax>
 		</bndbox>
 	</object>

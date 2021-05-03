@@ -12,15 +12,15 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>282</xmin>
-			<ymin>262</ymin>
-			<xmax>343</xmax>
-			<ymax>307</ymax>
+			<xmin>312</xmin>
+			<ymin>260</ymin>
+			<xmax>347</xmax>
+			<ymax>303</ymax>
 		</bndbox>
 	</object>
 	<object>
