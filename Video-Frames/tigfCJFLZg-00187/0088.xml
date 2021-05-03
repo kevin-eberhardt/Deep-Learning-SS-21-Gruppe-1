@@ -1,7 +1,7 @@
 <annotation>
 	<folder>tigfCJFLZg-00187</folder>
 	<filename>0088.jpg</filename>
-	<path>C:\Users\goetz\Desktop\tigfCJFLZg-00187\0088.jpg</path>
+	<path>C:\Users\goetz\DeepLearning\Deep-Learning-SS-21-Gruppe-1\Video-Frames\tigfCJFLZg-00187\0088.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -12,27 +12,27 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>core</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>297</xmin>
-			<ymin>224</ymin>
-			<xmax>340</xmax>
-			<ymax>265</ymax>
+			<xmin>226</xmin>
+			<ymin>201</ymin>
+			<xmax>318</xmax>
+			<ymax>276</ymax>
 		</bndbox>
 	</object>
 	<object>
-		<name>periphery</name>
+		<name>splash</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>214</xmin>
-			<ymin>118</ymin>
-			<xmax>638</xmax>
-			<ymax>347</ymax>
+			<xmin>315</xmin>
+			<ymin>138</ymin>
+			<xmax>437</xmax>
+			<ymax>276</ymax>
 		</bndbox>
 	</object>
 </annotation>
