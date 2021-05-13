@@ -1,0 +1,38 @@
+<annotation>
+	<folder>Video_289</folder>
+	<filename>Frame55.jpg</filename>
+	<path>/Users/cenkyagkan/Desktop/OMM/6. Semester/Deep Learning/Projekt/Video_289/Frame55.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>296</xmin>
+			<ymin>244</ymin>
+			<xmax>343</xmax>
+			<ymax>330</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>262</xmin>
+			<ymin>332</ymin>
+			<xmax>369</xmax>
+			<ymax>357</ymax>
+		</bndbox>
+	</object>
+</annotation>

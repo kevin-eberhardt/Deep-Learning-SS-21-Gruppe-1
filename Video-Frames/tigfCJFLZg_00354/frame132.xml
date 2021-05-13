@@ -1,0 +1,38 @@
+<annotation>
+	<folder>Frames of 354</folder>
+	<filename>frame132.jpg</filename>
+	<path>C:\Users\Pia\PycharmProjects\Deep_Learning_Test\Frames of 354\frame132.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>324</xmin>
+			<ymin>151</ymin>
+			<xmax>350</xmax>
+			<ymax>286</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>350</xmin>
+			<ymin>251</ymin>
+			<xmax>373</xmax>
+			<ymax>291</ymax>
+		</bndbox>
+	</object>
+</annotation>
