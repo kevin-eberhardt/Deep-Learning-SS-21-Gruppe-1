@@ -1,0 +1,26 @@
+<annotation>
+	<folder>tigfCJFLZg_00206</folder>
+	<filename>0145.jpg</filename>
+	<path>/Users/kevin96e/Coding/hdm-deep-learning/Video-Frames/tigfCJFLZg_00206/0145.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>241</xmin>
+			<ymin>194</ymin>
+			<xmax>336</xmax>
+			<ymax>265</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>_tigfCJFLZg_00311_frames</folder>
+	<filename>_tigfCJFLZg_00311_frame_89.jpg</filename>
+	<path>C:\Users\ralfs\Desktop\Neuer Ordner\_tigfCJFLZg_00311_frames\_tigfCJFLZg_00311_frame_89.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>226</xmin>
+			<ymin>190</ymin>
+			<xmax>340</xmax>
+			<ymax>279</ymax>
+		</bndbox>
+	</object>
+</annotation>

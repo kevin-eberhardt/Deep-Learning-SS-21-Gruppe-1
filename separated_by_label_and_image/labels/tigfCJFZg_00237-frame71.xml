@@ -1,0 +1,26 @@
+<annotation>
+	<folder>237</folder>
+	<filename>frame71.jpg</filename>
+	<path>/Users/alexander/01-deep-learning/videos/frames/237/frame71.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>234</xmin>
+			<ymin>133</ymin>
+			<xmax>371</xmax>
+			<ymax>304</ymax>
+		</bndbox>
+	</object>
+</annotation>
