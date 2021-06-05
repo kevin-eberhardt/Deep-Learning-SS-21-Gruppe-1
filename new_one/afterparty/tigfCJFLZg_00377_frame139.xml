@@ -1,0 +1,50 @@
+<annotation>
+	<folder>_tigfCJFLZg_00377_frames - Kopie</folder>
+	<filename>frame139.jpg</filename>
+	<path>C:\Users\Beil\Documents\Deep Learning\_tigfCJFLZg_00377_frames - Kopie\frame139.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>341</xmin>
+			<ymin>206</ymin>
+			<xmax>372</xmax>
+			<ymax>333</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>369</xmin>
+			<ymin>271</ymin>
+			<xmax>394</xmax>
+			<ymax>332</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>337</xmin>
+			<ymin>318</ymin>
+			<xmax>365</xmax>
+			<ymax>345</ymax>
+		</bndbox>
+	</object>
+</annotation>
