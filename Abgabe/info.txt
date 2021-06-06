@@ -1,0 +1,12 @@
+Checkliste: 
+- task 1a stuff 
+- Daten und weights etc für alle modelle
+- task 1b 1. model. erstellung validierung testing
+
+- yolo building, alles, damit yolo läuft,
+- yolo validierung 
+- utils
+- detect_video 1+2 
+- weights und daten (csv/txt) 
+
+- preprocessing
