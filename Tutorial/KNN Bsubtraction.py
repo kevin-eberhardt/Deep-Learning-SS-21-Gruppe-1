@@ -47,8 +47,18 @@ while True:
 ### KNN B-Substraction
 def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
                  score_threshold=0.3, iou_threshold=0.45, rectangle_colors=''):
-    backSub = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=40, detectShadows=False)
-    backSub2 = cv2.createBackgroundSubtractorKNN()
+    
+    #different background subtraction methods
+
+    # backSub = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=40, detectShadows=False)
+    backSub = cv2.createBackgroundSubtractorKNN()
+    
+    #KNN 
+    backSub.setDetectShadows(False)
+    backSub.setDist2Threshold(13000)
+    backSub.setkNNSamples(6)
+    backSub.setNSamples(30)
+
 
     times, times_2 = [], []
     vid = cv2.VideoCapture(video_path)
@@ -91,20 +101,15 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
         bboxes = postprocess_boxes(pred_bbox, original_image, input_size, score_threshold)
         bboxes = nms(bboxes, iou_threshold, method='nms')
 
-        backSub2.setDetectShadows(False)
-        backSub2.setDist2Threshold(2000)
-        backSub2.setkNNSamples(4)
-        backSub2.setNSamples(50)
-        fgMask2 = backSub2.apply(original_image,learningRate=0.4)
+        fgMask = backSub.apply(original_image,learningRate=0.9)
 
         if [i[5] for i in bboxes if CLASS_INDECES[int(i[5])] =="splash"]:
             #TODO JOIN and USE BOUNDINGBOXES  to create roi for splash
-
             
-            number_of_white_pix = np.sum(fgMask2 == 255)
-            number_total_pix = fgMask2.shape[0]*fgMask2.shape[1]
+            number_of_white_pix = np.sum(fgMask == 255)
+            number_total_pix = fgMask.shape[0]*fgMask.shape[1]
             print("Number of white pixels: {} ({}%)".format(number_of_white_pix, round((number_of_white_pix/number_total_pix)*100), 2))
-            image = cv2.cvtColor(fgMask2, cv2.COLOR_GRAY2RGB)
+            image = cv2.cvtColor(fgMask, cv2.COLOR_GRAY2RGB)
             image = cv2.putText(
                 image, 
                 "Number of white pixels: {} ({}%)".format(
