@@ -4,22 +4,38 @@ from time import sleep
 import os
 from multiprocessing import Pool
 
+def MOG2():
+    backSub = cv.createBackgroundSubtractorMOG2()
+    backSub.setDetectShadows(False)
+    return backSub
+
+
+def KNN():
+    backSub = cv.createBackgroundSubtractorKNN()
+    backSub.setDetectShadows(False)
+    backSub.setDist2Threshold(10000)
+    backSub.setkNNSamples(8)
+    backSub.setNSamples(100)
+    return backSub
+
+
 def do_background_subtraction(path):  
             capture = cv.VideoCapture(path)
-            backSub = cv.createBackgroundSubtractorKNN()
-            backSub.setDetectShadows(False)
-            backSub.setDist2Threshold(13000)
-            backSub.setkNNSamples(6)
-            backSub.setNSamples(30)
+            backSubKNN = KNN()
+            backSubMOG2 = MOG2()
 
             while True:
                 ret, frame = capture.read()
                 if frame is None:
                     break
 
-                fgMask = backSub.apply(frame,learningRate=0.9)
-                sleep(0.1)
-                cv.imshow(str(path[37:]), fgMask)
+                fgMaskKNN = backSubKNN.apply(frame,learningRate=0.9)
+                fgMaskMOG2 = backSubMOG2.apply(frame,learningRate=0.9)
+                
+                sleep(0.1)                
+                
+                cv.imshow(str(path[37:]) + " KNN", fgMaskKNN)
+                cv.imshow(str(path[37:]) + " MOG2", fgMaskMOG2)
                 keyboard = cv.waitKey(30)
             
                 if keyboard == 'q' or keyboard == 27:
