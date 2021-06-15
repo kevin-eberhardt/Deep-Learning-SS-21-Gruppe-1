@@ -131,3 +131,6 @@ dmypy.json
 
 
 .vscode/
+/yolov3/trained_model/yolov3_custom_v2_half_data.data-00000-of-00001
+/yolov3/trained_model/yolov3_custom_v2_half_data.index
+/yolov3/model_training/custom_dataset/

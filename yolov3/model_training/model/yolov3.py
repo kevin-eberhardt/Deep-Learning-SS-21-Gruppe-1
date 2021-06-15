@@ -284,7 +284,7 @@ def Create_Yolo(input_size=416, channels=3, training=False, CLASSES=YOLO_COCO_CL
         output_tensors.append(pred_tensor)
 
     Yolo = tf.keras.Model(input_layer, output_tensors)
-    tf.keras.utils.plot_model(Yolo, to_file="./model_training/model/yolov3.jpg", show_shapes=True)
+    #tf.keras.utils.plot_model(Yolo, to_file="./model_training/model/yolov3.jpg", show_shapes=True)
     return Yolo
 
 
