@@ -9,7 +9,7 @@ import os
 import tensorflow as tf
 CLASS_INDECES = {0:"diver",1:"splash"}
 
-
+#(x1, y1), (x2, y2) = (bboxes[0], bboxes[1]), (bboxes[2], bboxes[3])
 def splash_bbox_roi(splash_boxes,zoom=0,vid_shape=(640,480)): 
     """
     Zoom to reduce errors created through 
@@ -139,6 +139,14 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
                 # image = draw_bbox(image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
                 #splash_x_min,splash_y_min,splash_x_max,splash_y_max
                 image = cv2.rectangle(image, (splash_x_min,splash_y_min), (splash_x_max,splash_y_max), (255, 0, 0), 2)
+            
+            else:
+                # create mask and apply
+                mask = np.zeros(image.shape[:2], dtype="uint8")
+                cv2.rectangle(mask, (splash_x_min,splash_y_min), (splash_x_max,splash_y_max), 255, -1)
+                masked = cv2.bitwise_and(image, image, mask=mask)
+
+                image = masked
                 
 
         else:
