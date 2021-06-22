@@ -4,7 +4,7 @@ import cv2 as cv
 # Lukas
 
 # VIDEOPATH = "https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4"
-VIDEOPATH = 'C:\\Users\\Julius\\OneDrive - bwedu\\Studium\\06_Semester\\Deep Learning\\Videos\\_tigfCJFLZg_00146.mp4'
+VIDEOPATH = 'C:\\Users\\goetz\\Desktop\\DL Videos\\Better\\_tigfCJFLZg_00146.mp4'
 backSub2 = cv.createBackgroundSubtractorMOG2(detectShadows=False)
 
 
