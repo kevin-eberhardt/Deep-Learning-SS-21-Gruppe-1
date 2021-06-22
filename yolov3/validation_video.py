@@ -111,7 +111,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3) -> None:
+def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3) -> None:
     """
     Custom function to label videos with our model
     """
@@ -125,7 +125,7 @@ def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: flo
     threshold = str(score_threshold)
     output_path = "/".join([output_dir, video_name + "threshold-" + threshold + "_detected_" + timestamp + ".mp4"])
     # Detect and save
-    detect_video_knn(yolo, video_path=video_path, score_threshold=score_threshold, output_path=output_path,
+    detect_video_knn(yolo, video_path=video_path, score_threshold=score_threshold, iou_threshold=iou_threshold, output_path=output_path,
                  input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0))
 
 
