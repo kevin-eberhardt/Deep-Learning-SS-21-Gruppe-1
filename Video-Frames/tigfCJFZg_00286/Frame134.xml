@@ -1,0 +1,38 @@
+<annotation>
+	<folder>Video_286</folder>
+	<filename>Frame134.jpg</filename>
+	<path>/Users/cenkyagkan/Desktop/OMM/6. Semester/Deep Learning/Projekt/Video_286/Frame134.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>271</xmin>
+			<ymin>107</ymin>
+			<xmax>369</xmax>
+			<ymax>266</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>splash</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>335</xmin>
+			<ymin>270</ymin>
+			<xmax>380</xmax>
+			<ymax>297</ymax>
+		</bndbox>
+	</object>
+</annotation>

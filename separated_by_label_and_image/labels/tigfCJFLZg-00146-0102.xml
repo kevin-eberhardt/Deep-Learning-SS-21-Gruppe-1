@@ -1,0 +1,26 @@
+<annotation>
+	<folder>tigfCJFLZg-00146</folder>
+	<filename>0102.jpg</filename>
+	<path>C:\Users\Julius\OneDrive - bwedu\Studium\06_Semester\Deep Learning\Bilder\tigfCJFLZg-00146\0102.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diver</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>250</xmin>
+			<ymin>181</ymin>
+			<xmax>425</xmax>
+			<ymax>284</ymax>
+		</bndbox>
+	</object>
+</annotation>

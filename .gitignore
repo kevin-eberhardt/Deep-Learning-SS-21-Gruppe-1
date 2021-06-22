@@ -128,3 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.DS_Store
+
+
+.vscode/
+
+/yolov3/model_training/custom_dataset/
+/yolov3/validation/video_output/
+/yolov3/validation/videos/
+/yolov3/trained_model/yolov3_custom_v2_half_data.data-00000-of-00001
+/yolov3/trained_model/yolov3_custom_v2_half_data.index
