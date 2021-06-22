@@ -112,7 +112,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
             
 
             #splash_roi:
-            splash_roi = image[splash_y_min:splash_y_max, splash_x_min:splash_x_max]
+            splash_roi = fgMask[splash_y_min:splash_y_max, splash_x_min:splash_x_max]
             roi_number_of_white_pix = np.sum(splash_roi == 255)
             # roi_number_total_pix = splash_roi.shape[0]*splash_roi.shape[1]
             print("Roi: Number of white pixels: {} ({}%)".format(roi_number_of_white_pix, round((roi_number_of_white_pix/number_total_pix)*100), 2))
@@ -121,20 +121,8 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
             pixel_diff = abs(roi_number_of_white_pix - number_of_white_pix)
 
             image = cv2.cvtColor(fgMask, cv2.COLOR_GRAY2RGB)
-            image = cv2.putText(
-                image, 
-                "Vis. PXs (roi): {} ({}%) Total wPXs: {} ({}%) Diff: {} ({}%) ".format(
-                    roi_number_of_white_pix, 
-                    round((roi_number_of_white_pix/number_total_pix)*100,2), number_of_white_pix, 
-                    round((number_of_white_pix/number_total_pix)*100,2),pixel_diff,round((roi_number_of_white_pix/number_of_white_pix)*100,2)
-                    ),
-                (0, 30),
-                cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                1,(0, 0, 255), 2
-                )
-            
-            # TODO only display roi
 
+            
             if draw_roi:
                 # image = draw_bbox(image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
                 #splash_x_min,splash_y_min,splash_x_max,splash_y_max
@@ -147,7 +135,22 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
                 masked = cv2.bitwise_and(image, image, mask=mask)
 
                 image = masked
-                
+
+
+            image = cv2.putText(
+                image,
+                "Vis. PXs (roi): {} ({}%) Total wPXs: {} ({}%) Diff: {} ({}%) ".format(
+                    roi_number_of_white_pix,
+                    round((roi_number_of_white_pix / number_total_pix) * 100, 2),
+                    number_of_white_pix,
+                    round((number_of_white_pix / number_total_pix) * 100, 2),
+                    pixel_diff,
+                    round((roi_number_of_white_pix / number_of_white_pix) * 100, 2)
+                ),
+                (0, 30),
+                cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                0.7, (0, 0, 255), 1
+            )
 
         else:
             #TODO what todo with no splash images ?
