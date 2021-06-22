@@ -51,8 +51,11 @@ def recolor_bw(image,splash_red=True):
     #black to white: 
     image = cv2.bitwise_not(image)
     
-    if splash_red:    
-        black_mask = cv2.inRange(image, [0,0,0], [2,2,2])
+    if splash_red:
+
+        lower_black = np.array([0,0,0], dtype = "uint16")
+        upper_black = np.array([1,1,1], dtype = "uint16")
+        black_mask = cv2.inRange(image, lower_black, upper_black)
         #black splash to red
         image[black_mask == 0] = [0, 0, 255]
 
