@@ -5,6 +5,7 @@ import time
 from model_training.model.configs import YOLO_COCO_CLASSES, YOLO_INPUT_SIZE, TRAIN_CLASSES, YOLO_FRAMEWORK
 from model_training.model.utils import image_preprocess, postprocess_boxes, nms, draw_bbox
 from model_training.model.yolov3 import Create_Yolo
+import pandas as pd
 import os
 import tensorflow as tf
 CLASS_INDECES = {0:"diver",1:"splash"}
@@ -62,10 +63,10 @@ def recolor_bw(image,splash_red=True):
 
 
 ### KNN B-Substraction
-def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
+def detect_video_bgs(Yolo, video_path, output_path,log_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
                  score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False, zoom = 0,show_diver=True):
     
-
+    
     times, times_2 = [], []
     vid = cv2.VideoCapture(video_path)
 
@@ -79,6 +80,7 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
     LOW = np.array([80, 0, 200])
     HIGH = np.array([255, 110, 255])
 
+    log = pd.DataFrame(columns=["vis_px","vis_px_pc","total_px","total_px_pc","diff","diff_pc"])
     while True:
         _, img = vid.read()
         try:
@@ -144,18 +146,23 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
                 image = masked
 
 
-            
+            #Recolor
             image = recolor_bw(image,splash_red=True)
-
+            
+            #Calcs
+            vis_px_pc = round((roi_number_of_white_pix / number_total_pix) * 100, 2)
+            total_px_pc = round((number_of_white_pix / number_total_pix) * 100, 2)
+            diff_pc = round((roi_number_of_white_pix / number_of_white_pix) * 100, 2)
+            
             image = cv2.putText(
                 image,
                 "Vis. PXs (roi): {} ({}%) Total wPXs: {} ({}%) Diff: {} ({}%) ".format(
                     roi_number_of_white_pix,
-                    round((roi_number_of_white_pix / number_total_pix) * 100, 2),
+                    vis_px_pc,
                     number_of_white_pix,
-                    round((number_of_white_pix / number_total_pix) * 100, 2),
+                    total_px_pc,
                     pixel_diff,
-                    round((roi_number_of_white_pix / number_of_white_pix) * 100, 2)
+                    diff_pc
                 ),
                 (0, 30),
                 cv2.FONT_HERSHEY_COMPLEX_SMALL,
@@ -173,6 +180,16 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
 
             else:
                 image = draw_bbox(original_image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
+                    
+        #Create logs: 
+        log = log.append({
+            "vis_px":roi_number_of_white_pix,
+            "vis_px_pc":vis_px_pc,
+            "total_px":number_of_white_pix,
+            "total_px_pc":total_px_pc,
+            "diff":pixel_diff,
+            "diff_pc":diff_pc
+            }, ignore_index=True)
 
         t3 = time.time()
         times.append(t2 - t1)
@@ -198,6 +215,8 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
             if cv2.waitKey(25) & 0xFF == ord("q"):
                 cv2.destroyAllWindows()
                 break
+        
+    log.to_csv(log_path)
 
 
 
@@ -337,7 +356,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True) -> None:
+def yolo3_detect_video_2a(video_path: str, output_dir: str,log_path:str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True) -> None:
     """
     Custom function to label videos with our model
     """
@@ -356,7 +375,7 @@ def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: flo
     # Detect and save
     
     detect_video_bgs(yolo, video_path=video_path, score_threshold=score_threshold, iou_threshold=iou_threshold, output_path=output_path,
-                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi, zoom=zoom,show_diver=show_diver)
+                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi, zoom=zoom,show_diver=show_diver,log_path=log_path)
 
 
 def detect_video(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
