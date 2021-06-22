@@ -47,9 +47,20 @@ def splash_bbox_roi(splash_boxes,zoom=0,vid_shape=(640,480)):
 
     return int(x_min),int(y_min),int(x_max),int(y_max)
 
+def recolor_bw(image,splash_red=True):
+    #black to white: 
+    image = cv2.bitwise_not(image)
+
+    if splash_red:
+        #black splash to red
+        image[image == 0] = [0, 0, 255]
+
+    return image
+
+
 ### KNN B-Substraction
 def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
-                 score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False, zoom = 0):
+                 score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False, zoom = 0,show_diver=True):
     
 
     times, times_2 = [], []
@@ -145,10 +156,18 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
                 0.7, (0, 0, 255), 1
             )
 
+            image = recolor_bw(image,splash_red=True)
+
         else:
-            #TODO what todo with no splash images ?
-            
-            image = draw_bbox(original_image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
+            if not show_diver: 
+                #No splash and no diver should be shown.
+                image = np.zeros(original_image.shape[:2], dtype="uint8")
+                image = recolor_bw(image,splash_red=False)
+                
+
+
+            else:
+                image = draw_bbox(original_image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
 
         t3 = time.time()
         times.append(t2 - t1)
@@ -313,7 +332,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0) -> None:
+def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True) -> None:
     """
     Custom function to label videos with our model
     """
@@ -332,7 +351,7 @@ def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: flo
     # Detect and save
     
     detect_video_bgs(yolo, video_path=video_path, score_threshold=score_threshold, iou_threshold=iou_threshold, output_path=output_path,
-                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi, zoom=zoom)
+                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi, zoom=zoom,show_diver=show_diver)
 
 
 def detect_video(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
