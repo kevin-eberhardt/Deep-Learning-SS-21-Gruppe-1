@@ -24,8 +24,8 @@ def splash_bbox_roi(splash_boxes,zoom=0,vid_shape=(640,480)):
     x_coords = set()
 
     for i in splash_boxes: 
-        x_coords.union([i[0],i[2]])
-        y_coords.union([i[1],i[3]])
+        x_coords = x_coords.union([i[0],i[2]])
+        y_coords = y_coords.union([i[1],i[3]])
 
     # min/max für x und y
     y_min = min(y_coords)
@@ -43,14 +43,14 @@ def splash_bbox_roi(splash_boxes,zoom=0,vid_shape=(640,480)):
         y_min = max(0,y_min-zoom*span_y)
         y_max = min(vid_shape[1],y_max+zoom*span_y,)
         x_min = max(0,x_min-zoom*span_x)
-        x_max = min(vid_shape[0],x_min+zoom*span_x)
+        x_max = min(vid_shape[0],x_max+zoom*span_x)
 
-    return x_min,y_min,x_max,y_max
+    return int(x_min),int(y_min),int(x_max),int(y_max)
 
 
 ### KNN B-Substraction
 def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
-                 score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False):
+                 score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False, zoom = 0):
     
     #different background subtraction methods
 
@@ -99,10 +99,10 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
         fgMask = backSub.apply(original_image,learningRate=0.9)
         
         #(x1, y1), (x2, y2) = (bboxes[0], bboxes[1]), (bboxes[2], bboxes[3])
-        splash_boxes = [i[5] for i in bboxes if CLASS_INDECES[int(i[5])] =="splash"]
+        splash_boxes = [i for i in bboxes if CLASS_INDECES[int(i[5])] =="splash"]
         
         if splash_boxes: 
-            splash_x_min,splash_y_min,splash_x_max,splash_y_max = splash_bbox_roi(splash_boxes=splash_boxes,zoom=0.1)
+            splash_x_min,splash_y_min,splash_x_max,splash_y_max = splash_bbox_roi(splash_boxes=splash_boxes,zoom=zoom)
 
             
             #normal_image:
@@ -123,7 +123,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
             image = cv2.cvtColor(fgMask, cv2.COLOR_GRAY2RGB)
             image = cv2.putText(
                 image, 
-                "Visible pixels (roi): {} ({}%)  Total white pixels: {} ({}%) Differenz: {} ({}%) ".format(
+                "Vis. PXs (roi): {} ({}%) Total wPXs: {} ({}%) Diff: {} ({}%) ".format(
                     roi_number_of_white_pix, 
                     round((roi_number_of_white_pix/number_total_pix)*100,2), number_of_white_pix, 
                     round((number_of_white_pix/number_total_pix)*100,2),pixel_diff,round((roi_number_of_white_pix/number_of_white_pix)*100,2)
@@ -173,16 +173,16 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False) -> None:
+def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0) -> None:
     """
     Custom function to label videos with our model
     """
-    if not os.path.isfile(video_path):
-        raise FileNotFoundError("No video file found")
+    """if not os.path.isfile(video_path):
+        raise FileNotFoundError("No video file found")"""
 
     # Setup yolo
     yolo = Create_Yolo(input_size=YOLO_INPUT_SIZE, CLASSES=TRAIN_CLASSES)
-    yolo.load_weights("yolov3/trained_model/yolov3_custom_v2_half_data")
+    yolo.load_weights("./trained_model/yolov3_custom_v2_half_data")
 
     # Create path:
     timestamp = str(datetime.datetime.now()).replace(":", "").replace(" ", "_").split(".")[0]
@@ -192,7 +192,7 @@ def yolo3_detect_video_2a(video_path: str, output_dir: str, score_threshold: flo
     # Detect and save
     
     detect_video_knn(yolo, video_path=video_path, score_threshold=score_threshold, iou_threshold=iou_threshold, output_path=output_path,
-                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi)
+                 input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255, 0, 0),draw_roi=draw_roi, zoom=zoom)
 
 
 def detect_video(Yolo, video_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
