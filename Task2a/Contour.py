@@ -27,25 +27,6 @@ while True:
     cv2.imshow('Masked Frame', mask)
     cv2.drawContours(frame, contours,-1,(0,0,255),2)
     cv2.imshow('Frame with Contours', frame)
-    
-    
-    # # Noise reduction (je nachdem gehen die kleinsten splashes verloren gut?)
-    # for c in contours:
-    #     area = cv2.contourArea(c)
-    #     # remove noise by size:
-    #     if area > 0:
-    #         #x, y koodrinate
-    #         #w, h Breite , Höhe
-    #         x, y, w, h = cv2.boundingRect(c)
-    #         # Boxen künstlich vergrößern:
-    #         cv2.rectangle(frame, (x-5, y-5), (x-5+w+10, y-5+h+10), (255,0,0),0)
-    #         cv2.drawContours(frame, c, 0,(0,0,255),0)
-    #     cv2.imshow('Frame without contours', frame)
-        
-    #     #mask image
-    #     hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-    #     mask = cv2.inRange(hsv,low,high)
-    #     cv2.imshow('Masked Frame withourt noise', mask)
 
     if cv2.waitKey(100) == ord('q'):
         break
