@@ -50,10 +50,11 @@ def splash_bbox_roi(splash_boxes,zoom=0,vid_shape=(640,480)):
 def recolor_bw(image,splash_red=True):
     #black to white: 
     image = cv2.bitwise_not(image)
-
-    if splash_red:
+    
+    if splash_red:    
+        black_mask = cv2.inRange(image, [0,0,0], [2,2,2])
         #black splash to red
-        image[image == 0] = [0, 0, 255]
+        image[black_mask == 0] = [0, 0, 255]
 
     return image
 
@@ -141,6 +142,9 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
                 image = masked
 
 
+            
+            image = recolor_bw(image,splash_red=True)
+
             image = cv2.putText(
                 image,
                 "Vis. PXs (roi): {} ({}%) Total wPXs: {} ({}%) Diff: {} ({}%) ".format(
@@ -156,7 +160,6 @@ def detect_video_bgs(Yolo, video_path, output_path, input_size=416, show=False, 
                 0.7, (0, 0, 255), 1
             )
 
-            image = recolor_bw(image,splash_red=True)
 
         else:
             if not show_diver: 
