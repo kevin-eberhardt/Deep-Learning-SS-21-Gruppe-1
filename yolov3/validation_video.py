@@ -168,7 +168,15 @@ def detect_video_bgs(Yolo, video_path, output_path,log_path, input_size=416, sho
                 cv2.FONT_HERSHEY_COMPLEX_SMALL,
                 0.7, (0, 0, 255), 1
             )
-
+            # Create logs:
+            log = log.append({
+                "vis_px": roi_number_of_white_pix,
+                "vis_px_pc": vis_px_pc,
+                "total_px": number_of_white_pix,
+                "total_px_pc": total_px_pc,
+                "diff": pixel_diff,
+                "diff_pc": diff_pc
+            }, ignore_index=True)
 
         else:
             if not show_diver: 
@@ -180,16 +188,7 @@ def detect_video_bgs(Yolo, video_path, output_path,log_path, input_size=416, sho
 
             else:
                 image = draw_bbox(original_image, bboxes, CLASSES=CLASSES, rectangle_colors=rectangle_colors)
-                    
-        #Create logs: 
-        log = log.append({
-            "vis_px":roi_number_of_white_pix,
-            "vis_px_pc":vis_px_pc,
-            "total_px":number_of_white_pix,
-            "total_px_pc":total_px_pc,
-            "diff":pixel_diff,
-            "diff_pc":diff_pc
-            }, ignore_index=True)
+
 
         t3 = time.time()
         times.append(t2 - t1)
@@ -356,16 +355,13 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str,log_path:str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True) -> None:
+def yolo3_detect_video_2a(video_path: str, output_dir: str,log_path:str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True, yolo = None) -> None:
     """
     Custom function to label videos with our model
     """
     """if not os.path.isfile(video_path):
         raise FileNotFoundError("No video file found")"""
 
-    # Setup yolo
-    yolo = Create_Yolo(input_size=YOLO_INPUT_SIZE, CLASSES=TRAIN_CLASSES)
-    yolo.load_weights("./trained_model/yolov3_custom_v2_half_data")
 
     # Create path:
     timestamp = str(datetime.datetime.now()).replace(":", "").replace(" ", "_").split(".")[0]
