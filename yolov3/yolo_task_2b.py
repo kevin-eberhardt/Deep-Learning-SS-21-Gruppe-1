@@ -19,11 +19,10 @@ for filename in os.listdir(directory):
     
 output_path =    "./validation/video_output/all_videos/"
 for file_path in paths:
-    if "_tigfCJFLZg_00160.mp4" in file_path:
-        video_path = "./validation/videos/"
-        filename = file_path.split("/")[-1]
-        log_path = os.path.join("./validation/video_logs/all_videos/", filename.replace(".mp4", ".csv"))
-        yolo3_detect_video_2a(yolo = yolo, video_path = file_path,
-                              output_dir=output_path, log_path=log_path,
-                              score_threshold=0.32, iou_threshold=0.32,
-                              draw_roi=True, zoom=0.3,show_diver=True)
+    video_path = "./validation/videos/"
+    filename = file_path.split("/")[-1]
+    log_path = os.path.join("./validation/video_logs/all_videos/", filename.replace(".mp4", ".csv"))
+    yolo3_detect_video_2a(yolo = yolo, video_path = file_path,
+                          output_dir=output_path, log_path=log_path,
+                          score_threshold=0.32, iou_threshold=0.32,
+                          draw_roi=True, zoom=0.3,show_diver=True)
