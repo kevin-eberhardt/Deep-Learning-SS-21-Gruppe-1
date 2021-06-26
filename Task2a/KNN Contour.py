@@ -3,7 +3,7 @@ import numpy as np
 from time import sleep
 
 #VIDEOPATH = 'C:\\Users\\goetz\\Desktop\\DL Videos\\Better\\_tigfCJFLZg_00187.mp4'
-VIDEOPATH = 'C:\\Users\\goetz\\Desktop\\DL Videos\\_8Vy3dlHg2w_00218.mp4'
+VIDEOPATH = 'C:\\Users\\goetz\\Desktop\\DL Videos\\_tigfCJFLZg_00187.mp4'
 
 
 #Color_Range for masking
