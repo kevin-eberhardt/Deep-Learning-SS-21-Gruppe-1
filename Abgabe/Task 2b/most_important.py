@@ -67,7 +67,6 @@ def recolor_bw(image,splash_red=True):
 
 
 
-### KNN B-Substraction
 def detect_video_bgs(Yolo, video_path, output_path,log_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES,
                  score_threshold=0.3, iou_threshold=0.45, rectangle_colors='',draw_roi=False, zoom = 0,show_diver=True):
     
