@@ -28,7 +28,7 @@ while True:
     contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     # show frames
-    cv2.imshow('Masked Frame', mask)
+    cv2.imshow('Masked Frame', cv2.bitwise_not(mask))
     cv2.drawContours(frame, contours,-1,(0,0,255),2)
     cv2.imshow('Frame with Contours', frame)
     
