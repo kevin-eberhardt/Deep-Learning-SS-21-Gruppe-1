@@ -355,7 +355,7 @@ def detect_video_knn(Yolo, video_path, output_path, input_size=416, show=False, 
 
     cv2.destroyAllWindows()
 
-def yolo3_detect_video_2a(video_path: str, output_dir: str,log_path:str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True, yolo = None) -> None:
+def yolo3_detect_video_2b(video_path: str, output_dir: str,log_path:str, score_threshold: float = 0.3, iou_threshold: float = 0.3,draw_roi=False, zoom: float = 0,show_diver=True, yolo = None) -> None:
     """
     Custom function to label videos with our model
     """
